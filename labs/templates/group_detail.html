@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ object }}
+{% endblock %}
+
+{% block content %}
+  <div class="module">
+    <h2>{{ object }}</h2>
+    {% for lab, results in labs.items %}
+        <h3>{{ lab }}</h3>
+      {% for result in results %}
+      <div class="course-info">
+        <ul>
+            {% for k, v in result.data.items %}
+            <li>{{ k }}: {{ v }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% empty %}
+          <p>Пока еще нет результатов</p>
+      {% endfor %}
+    {% empty %}
+      <p>Пока еще нет лабораторных</p>
+    {% endfor %}
+  </div>
+{% endblock %}

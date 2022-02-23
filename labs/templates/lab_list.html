@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Список работ</h1>
+
+  <div class="module">
+    {% for lab in object_list %}
+      <div class="course-info">
+        <h3>{{ lab.id }}. {{ lab.name }}</h3>
+        <p>
+          <a href="{% url "lab-detail" lab.id %}">Посмотреть результаты</a>
+        </p>
+      </div>
+    {% empty %}
+      <p>Пока еще не создано работ</p>
+    {% endfor %}
+  </div>
+{% endblock %}
